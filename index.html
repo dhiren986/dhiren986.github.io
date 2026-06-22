@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dhiren Prajapati — Magento 2 / Adobe Commerce Architect</title>
+<meta name="description" content="Magento 2 / Adobe Commerce Architect with 13+ years of experience, 27 projects delivered across 7 countries.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#10172A;
+    --ink-soft:#1B2540;
+    --paper:#F7F5F0;
+    --paper-dim:#EFEBE1;
+    --copper:#C2703D;
+    --copper-bright:#D98B52;
+    --slate:#5B6478;
+    --slate-light:#8B92A3;
+    --line:rgba(16,23,42,0.12);
+    --line-light:rgba(247,245,240,0.16);
+    --serif:'Source Serif 4', serif;
+    --sans:'Inter', sans-serif;
+    --mono:'JetBrains Mono', monospace;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  :focus-visible{outline:2px solid var(--copper); outline-offset:3px;}
+
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){.wrap{padding:0 20px;}}
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--copper);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:6px;height:6px;
+    background:var(--copper);
+    display:inline-block;
+    border-radius:1px;
+    transform:rotate(45deg);
+  }
+
+  /* ===== HEADER / NAV ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,245,240,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .nav-mark{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:0.02em;
+  }
+  .nav-mark span{color:var(--copper);}
+  .nav-links{display:flex; gap:28px; font-size:13px; font-family:var(--mono);}
+  .nav-links a{color:var(--slate); transition:color .2s;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-cta{
+    font-family:var(--mono); font-size:12px;
+    border:1px solid var(--ink); padding:8px 14px;
+    transition:background .2s, color .2s;
+  }
+  .nav-cta:hover{background:var(--ink); color:var(--paper);}
+  @media (max-width:760px){.nav-links{display:none;}}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    padding:96px 0 72px;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:'';
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:48px 48px;
+    opacity:0.5;
+    mask-image:linear-gradient(to bottom, black, transparent);
+  }
+  .hero-inner{position:relative; z-index:1;}
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(38px, 6vw, 64px);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+    margin:18px 0 20px;
+    max-width:880px;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--copper);
+  }
+  .hero-sub{
+    font-size:18px;
+    color:var(--slate);
+    max-width:600px;
+    margin-bottom:36px;
+  }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:8px 10px;
+    margin-bottom:40px;
+  }
+  .tag{
+    font-family:var(--mono); font-size:12px;
+    border:1px solid var(--line);
+    padding:6px 11px;
+    color:var(--slate);
+    background:rgba(255,255,255,0.4);
+  }
+  .tag.live{
+    border-color:var(--copper);
+    color:var(--copper);
+  }
+  .tag.live::before{
+    content:'● ';
+  }
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono); font-size:13px;
+    padding:13px 22px;
+    border:1px solid var(--ink);
+    display:inline-flex; align-items:center; gap:8px;
+    transition:all .2s;
+  }
+  .btn-primary{background:var(--ink); color:var(--paper);}
+  .btn-primary:hover{background:var(--copper); border-color:var(--copper);}
+  .btn-ghost:hover{background:var(--ink); color:var(--paper);}
+
+  /* stat strip */
+  .stats{
+    display:grid; grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--line);
+    margin-top:56px;
+  }
+  .stat{
+    padding:24px 8px 0;
+    border-left:1px solid var(--line);
+  }
+  .stat:first-child{border-left:none;}
+  .stat .num{
+    font-family:var(--serif); font-weight:600;
+    font-size:clamp(28px,4vw,40px);
+    color:var(--ink);
+    display:flex; align-items:baseline; gap:4px;
+  }
+  .stat .num .suffix{font-size:0.5em; color:var(--copper); font-family:var(--mono); font-weight:600;}
+  .stat .label{
+    font-family:var(--mono); font-size:11px; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--slate); margin-top:6px;
+  }
+  @media (max-width:640px){
+    .stats{grid-template-columns:repeat(2,1fr); row-gap:24px;}
+    .stat:nth-child(3){border-left:none;}
+  }
+
+  /* ===== SECTION SCAFFOLDING ===== */
+  section{padding:88px 0;}
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    margin-bottom:48px; gap:24px; flex-wrap:wrap;
+    border-bottom:1px solid var(--line);
+    padding-bottom:24px;
+  }
+  .section-head h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:clamp(28px,4vw,40px);
+    margin-top:10px;
+  }
+  .section-index{
+    font-family:var(--mono); font-size:13px; color:var(--slate-light);
+    text-align:right;
+  }
+
+  /* ===== BUILD LOG (experience) ===== */
+  .log{border-top:1px solid var(--line);}
+  .log-entry{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:32px;
+    padding:36px 0;
+    border-bottom:1px solid var(--line);
+    position:relative;
+  }
+  @media (max-width:760px){
+    .log-entry{grid-template-columns:1fr;}
+  }
+  .log-when{
+    font-family:var(--mono); font-size:12px; color:var(--slate);
+    padding-top:4px;
+  }
+  .log-when .range{color:var(--ink); font-weight:600; display:block; margin-bottom:4px;}
+  .log-when .dur{color:var(--copper);}
+  .log-current .log-when .range{color:var(--copper);}
+  .log-body h3{
+    font-family:var(--serif); font-weight:600; font-size:21px;
+    margin-bottom:2px;
+  }
+  .log-body .role-company{
+    font-size:14px; color:var(--slate); margin-bottom:16px;
+    font-family:var(--sans);
+  }
+  .log-body .role-company .co{color:var(--ink); font-weight:600;}
+  .log-body ul{list-style:none; display:flex; flex-direction:column; gap:9px;}
+  .log-body li{
+    font-size:14.5px; color:var(--ink-soft); padding-left:18px; position:relative;
+    line-height:1.55;
+  }
+  .log-body li::before{
+    content:'→';
+    position:absolute; left:0; color:var(--copper);
+    font-family:var(--mono); font-size:13px;
+  }
+  .log-status{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--copper); margin-top:14px;
+  }
+  .log-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--copper);}
+
+  /* ===== EXPERTISE GRID ===== */
+  .expertise-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line);
+  }
+  @media (max-width:760px){.expertise-grid{grid-template-columns:1fr;}}
+  .expertise-cell{
+    background:var(--paper);
+    padding:32px 28px;
+  }
+  .expertise-cell .num{
+    font-family:var(--mono); font-size:12px; color:var(--copper); margin-bottom:14px; display:block;
+  }
+  .expertise-cell h3{
+    font-family:var(--serif); font-size:19px; font-weight:600; margin-bottom:10px;
+  }
+  .expertise-cell p{font-size:14px; color:var(--slate); line-height:1.6;}
+
+  /* ===== SKILLS SPEC TABLE ===== */
+  .spec-table{width:100%; border-top:1px solid var(--line);}
+  .spec-row{
+    display:grid; grid-template-columns:160px 1fr;
+    border-bottom:1px solid var(--line);
+    padding:20px 0;
+    gap:24px;
+  }
+  @media (max-width:640px){.spec-row{grid-template-columns:1fr; gap:8px;}}
+  .spec-key{
+    font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--slate); padding-top:3px;
+  }
+  .spec-val{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    font-size:13.5px; padding:5px 12px;
+    background:var(--paper-dim);
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+  }
+
+  /* ===== PROJECTS ===== */
+  .proj-list{border-top:1px solid var(--line);}
+  .proj-row{
+    display:grid; grid-template-columns:1fr 1fr 1.6fr;
+    gap:28px;
+    padding:28px 0;
+    border-bottom:1px solid var(--line);
+    align-items:start;
+  }
+  @media (max-width:820px){.proj-row{grid-template-columns:1fr;}}
+  .proj-name{
+    font-family:var(--serif); font-weight:600; font-size:18px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .proj-name .badge{
+    font-family:var(--mono); font-size:9px; color:var(--copper);
+    border:1px solid var(--copper); padding:2px 6px;
+    text-transform:uppercase;
+  }
+  .proj-country{
+    font-family:var(--mono); font-size:12px; color:var(--slate); margin-top:4px;
+  }
+  .proj-stack{display:flex; flex-wrap:wrap; gap:6px; align-content:flex-start;}
+  .proj-stack span{
+    font-family:var(--mono); font-size:11px; color:var(--copper);
+    background:rgba(194,112,61,0.08);
+    padding:4px 8px;
+  }
+  .proj-desc{font-size:14px; color:var(--ink-soft); line-height:1.6;}
+
+  /* ===== FOOTER / CONTACT ===== */
+  footer{
+    background:var(--ink);
+    color:var(--paper);
+    padding:88px 0 48px;
+  }
+  footer .eyebrow{color:var(--copper-bright);}
+  footer h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:clamp(30px,5vw,48px);
+    margin:18px 0 24px;
+    max-width:680px;
+  }
+  footer p.lead{color:#B7BCCB; max-width:520px; font-size:16px; margin-bottom:36px;}
+  .contact-grid{
+    display:grid; grid-template-columns:repeat(4,1fr);
+    gap:24px;
+    margin-top:56px;
+    border-top:1px solid var(--line-light);
+    padding-top:32px;
+  }
+  @media (max-width:760px){.contact-grid{grid-template-columns:repeat(2,1fr);}}
+  .contact-item .k{
+    font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--slate-light); margin-bottom:8px; display:block;
+  }
+  .contact-item .v{font-size:15px;}
+  .contact-item a:hover{color:var(--copper-bright);}
+  .foot-bottom{
+    margin-top:64px; padding-top:24px;
+    border-top:1px solid var(--line-light);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    font-family:var(--mono); font-size:12px; color:var(--slate-light);
+  }
+  .foot-actions{display:flex; gap:14px;}
+  footer .btn-primary{background:var(--copper); border-color:var(--copper); color:var(--ink);}
+  footer .btn-primary:hover{background:var(--copper-bright); border-color:var(--copper-bright);}
+  footer .btn-ghost{border-color:var(--line-light); color:var(--paper);}
+  footer .btn-ghost:hover{background:var(--paper); color:var(--ink);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="nav-mark">DHIREN<span>/</span>PRAJAPATI</div>
+    <nav class="nav-links">
+      <a href="#experience">Experience</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Magento 2 / Adobe Commerce Architect</div>
+    <h1>Architecting enterprise commerce<br>that ships in <em>7 countries</em>, not&nbsp;one.</h1>
+    <p class="hero-sub">13+ years building, scaling, and migrating Magento 2 / Adobe Commerce platforms for international enterprise clients — from architecture to production go-live.</p>
+    <div class="hero-meta">
+      <span class="tag live">Open to remote &amp; relocation worldwide</span>
+      <span class="tag">2-month notice period</span>
+      <span class="tag">Ahmedabad, India</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#contact">Get in touch →</a>
+      <a class="btn btn-ghost" href="#projects">View 11 live platforms</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="num">27</div>
+        <div class="label">Projects delivered</div>
+      </div>
+      <div class="stat">
+        <div class="num">13<span class="suffix">+</span></div>
+        <div class="label">Years experience</div>
+      </div>
+      <div class="stat">
+        <div class="num">07</div>
+        <div class="label">Client countries</div>
+      </div>
+      <div class="stat">
+        <div class="num">08</div>
+        <div class="label">Max team size led</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Build log</div>
+        <h2>Career trajectory</h2>
+      </div>
+      <div class="section-index">SEVEN ROLES / 2011 — PRESENT</div>
+    </div>
+
+    <div class="log">
+
+      <div class="log-entry log-current">
+        <div class="log-when">
+          <span class="range">Jan 2025 — Present</span>
+          <span class="dur">Current role</span>
+        </div>
+        <div class="log-body">
+          <h3>Senior Software Engineer / Magento Tech Lead</h3>
+          <div class="role-company"><span class="co">SV Global Design Pvt. Ltd.</span> · New Delhi</div>
+          <ul>
+            <li>Leading a team of 6 Magento engineers through daily standups, sprint planning, and architecture reviews, maintaining delivery velocity and code quality.</li>
+            <li>Designing custom Magento 2 extensions using DI, plugins, and service contracts — cut order processing errors by 30%.</li>
+            <li>Architecting scalable themes with complex frontend customisation using Layout XML, Knockout.js, and RequireJS.</li>
+            <li>Integrating payment gateways, ERP systems, and shipping platforms via REST API for a product-based Magento platform.</li>
+            <li>Improving store performance via Redis caching, Varnish FPC, indexing optimisation, and query tuning.</li>
+          </ul>
+          <div class="log-status">Actively building</div>
+        </div>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-when"><span class="range">Aug 2023 — Sep 2024</span><span class="dur">1 yr 2 mo</span></div>
+        <div class="log-body">
+          <h3>Senior Software Engineer / Magento Team Lead</h3>
+          <div class="role-company"><span class="co">Mavenbird Technologies Pvt. Ltd.</span> · Ahmedabad</div>
+          <ul>
+            <li>Led Adobe Commerce Enterprise (B2B + B2C) development for 5 international clients across the US and UK, architecture through production go-live.</li>
+            <li>Coordinated a 5-member team delivering all 5 projects on schedule with zero critical post-launch defects and 99.9% platform uptime.</li>
+            <li>Managed Adobe Commerce Cloud infrastructure: CI/CD pipelines, environment setup, performance monitoring.</li>
+            <li>Led direct client communication for international accounts, securing 2 contract renewals.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-when"><span class="range">Sep 2022 — Jun 2023</span><span class="dur">10 mo</span></div>
+        <div class="log-body">
+          <h3>Team Leader — Magento</h3>
+          <div class="role-company"><span class="co">Brightness Software Development I Pvt. Ltd.</span> · Ahmedabad</div>
+          <ul>
+            <li>Managed and mentored a team of 8 Magento developers, introducing agile sprint cycles that raised on-time delivery from 60% to 90%.</li>
+            <li>Delivered 4 Magento 2 projects for Australia and UAE clients spanning Hyvä theme development, API integrations, and performance optimisation.</li>
+            <li>Reduced average bug resolution time by 35% through structured triage meetings and a shared code-review checklist.</li>
+            <li>Spearheaded Hyvä Theme adoption, cutting frontend build time by 40% vs legacy Luma.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-when"><span class="range">Jan 2018 — Sep 2022</span><span class="dur">4 yr 8 mo</span></div>
+        <div class="log-body">
+          <h3>Senior Magento Developer</h3>
+          <div class="role-company"><span class="co">DRC Systems India Ltd.</span> · Gandhinagar</div>
+          <ul>
+            <li>Delivered 8 Magento 2 enterprise projects for clients in India, Germany, and France — B2B portals, multi-store, headless commerce.</li>
+            <li>Built custom ERP (SAP/Odoo) sync modules, inventory management, and payment integrations — eliminated 100% of manual data entry.</li>
+            <li>Developed REST and GraphQL APIs powering Flutter iOS/Android apps without duplicating back-end logic.</li>
+            <li>Implemented AWS-hosted monitoring and backup achieving sub-2-second page loads; trained 5 junior developers, 3 promoted within 18 months.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-when"><span class="range">Jan 2015 — Dec 2017</span><span class="dur">3 yrs</span></div>
+        <div class="log-body">
+          <h3>Senior Magento Developer</h3>
+          <div class="role-company"><span class="co">Dolphin Web Solution Pvt. Ltd.</span> · Ahmedabad</div>
+          <ul>
+            <li>Led 5 Magento 1 → Magento 2 migrations with zero-downtime go-lives, security patching, and legacy codebase modernisation.</li>
+            <li>Built fully custom themes and modular extensions from scratch, reducing maintenance costs by ~25%.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-when"><span class="range">Aug 2012 — Dec 2014</span><span class="dur">2 yr 5 mo</span></div>
+        <div class="log-body">
+          <h3>Magento Developer</h3>
+          <div class="role-company"><span class="co">Czargroup Technologies</span> · Ahmedabad</div>
+          <ul>
+            <li>Developed Magento back-end modules and custom PHP functionality.</li>
+            <li>Reduced security vulnerabilities by 40% through code hardening.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-when"><span class="range">Oct 2011 — Jul 2012</span><span class="dur">10 mo</span></div>
+        <div class="log-body">
+          <h3>Web Developer</h3>
+          <div class="role-company"><span class="co">3-Steps Ahead Technology</span> · Ahmedabad</div>
+          <ul>
+            <li>Built front-end and back-end web modules using PHP, HTML, CSS, and JavaScript.</li>
+            <li>Resolved critical pre-launch security vulnerabilities.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="expertise" style="background:var(--paper-dim); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head" style="border-color:var(--line);">
+      <div>
+        <div class="eyebrow">Architecture expertise</div>
+        <h2>Where the depth is</h2>
+      </div>
+      <div class="section-index">5 DOMAINS</div>
+    </div>
+
+    <div class="expertise-grid">
+      <div class="expertise-cell">
+        <span class="num">01</span>
+        <h3>Architecture &amp; extensions</h3>
+        <p>Magento 2 architecture and best practices, custom extension and module development using DI, plugins, observers, and service contracts.</p>
+      </div>
+      <div class="expertise-cell">
+        <span class="num">02</span>
+        <h3>Hyvä &amp; headless</h3>
+        <p>Hyvä Theme and PWA Studio development, plus headless commerce architecture for API-driven storefronts.</p>
+      </div>
+      <div class="expertise-cell">
+        <span class="num">03</span>
+        <h3>M1 → M2 migration</h3>
+        <p>Migration strategy for live production stores — 5+ zero-downtime go-lives with security patching and codebase modernisation.</p>
+      </div>
+      <div class="expertise-cell">
+        <span class="num">04</span>
+        <h3>Adobe Commerce Enterprise</h3>
+        <p>Enterprise implementation with multi-store and multi-currency architecture across regional storefronts.</p>
+      </div>
+      <div class="expertise-cell">
+        <span class="num">05</span>
+        <h3>API-driven commerce</h3>
+        <p>REST and GraphQL APIs, third-party integrations across ERP, CRM, payment, and shipping systems.</p>
+      </div>
+      <div class="expertise-cell">
+        <span class="num">06</span>
+        <h3>Performance at scale</h3>
+        <p>Redis, Varnish, indexing, and caching strategy tuned for high-traffic enterprise storefronts.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:56px;">
+      <div class="spec-table">
+        <div class="spec-row">
+          <div class="spec-key">eCommerce</div>
+          <div class="spec-val">
+            <span class="chip">Magento 2</span><span class="chip">Adobe Commerce Enterprise</span><span class="chip">Hyvä Theme</span><span class="chip">PWA Studio</span><span class="chip">Magento 1</span><span class="chip">Multi-Store</span>
+          </div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Backend</div>
+          <div class="spec-val">
+            <span class="chip">PHP</span><span class="chip">OOP</span><span class="chip">DI</span><span class="chip">Plugins</span><span class="chip">Observers</span><span class="chip">Service Contracts</span><span class="chip">Cron Jobs</span><span class="chip">CLI Commands</span><span class="chip">Laravel</span>
+          </div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Frontend</div>
+          <div class="spec-val">
+            <span class="chip">Hyvä</span><span class="chip">Luma</span><span class="chip">Layout XML</span><span class="chip">Knockout.js</span><span class="chip">RequireJS</span><span class="chip">HTML5</span><span class="chip">CSS3 / LESS</span><span class="chip">JavaScript</span><span class="chip">jQuery</span>
+          </div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">APIs</div>
+          <div class="spec-val">
+            <span class="chip">REST APIs</span><span class="chip">GraphQL</span><span class="chip">Third-Party APIs</span><span class="chip">ERP Integrations</span><span class="chip">Payment &amp; Shipping Integrations</span>
+          </div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Database</div>
+          <div class="spec-val">
+            <span class="chip">MySQL</span><span class="chip">Query Optimisation</span><span class="chip">Elasticsearch</span><span class="chip">Redis Cache</span><span class="chip">Varnish Cache</span><span class="chip">Magento Indexing</span>
+          </div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">DevOps / Cloud</div>
+          <div class="spec-val">
+            <span class="chip">AWS</span><span class="chip">Docker</span><span class="chip">CI/CD Pipelines</span><span class="chip">Git</span><span class="chip">Bitbucket</span><span class="chip">Magento Cloud CLI</span><span class="chip">Cloud Environments</span>
+          </div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Leadership</div>
+          <div class="spec-val">
+            <span class="chip">Technical Architecture</span><span class="chip">Team Lead — up to 8 devs</span><span class="chip">Agile / Scrum</span><span class="chip">Direct Client Communication</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Selected work</div>
+        <h2>11 live eCommerce platforms</h2>
+      </div>
+      <div class="section-index">ARCHITECTURE / DEV / TEAM LEAD / CLIENT</div>
+    </div>
+
+    <div class="proj-list">
+
+      <div class="proj-row">
+        <div>
+          <div class="proj-name">Jazeera Paints <span class="badge">Award</span></div>
+          <div class="proj-country">Saudi Arabia / UAE</div>
+        </div>
+        <div class="proj-stack">
+          <span>Magento 2</span><span>B2B+B2C</span><span>Arabic RTL</span><span>REST API</span><span>App</span>
+        </div>
+        <div class="proj-desc">Enterprise platform for a 47-year-old Guinness World Record paint brand. Dual B2B+B2C portal, Arabic RTL bilingual, 400+ SKUs, iOS/Android app with AR colour visualiser via Magento REST APIs.</div>
+      </div>
+
+      <div class="proj-row">
+        <div>
+          <div class="proj-name">Andaaz Fashion</div>
+          <div class="proj-country">USA / UK / Malaysia / France</div>
+        </div>
+        <div class="proj-stack">
+          <span>Magento 2</span><span>Multi-Store</span><span>Multi-Currency</span><span>DIY</span>
+        </div>
+        <div class="proj-desc">Large-scale B2C fashion platform with 4 regional storefronts, 100,000+ SKUs, custom DIY tailoring configurator, WhatsApp integration, and multi-currency support.</div>
+      </div>
+
+      <div class="proj-row">
+        <div>
+          <div class="proj-name">PY Timber Warehouse</div>
+          <div class="proj-country">Australia</div>
+        </div>
+        <div class="proj-stack">
+          <span>Magento 2</span><span>Hyvä Theme</span><span>Multi-State</span><span>Mobile App</span>
+        </div>
+        <div class="proj-desc">8-state Magento 2 + Hyvä Theme platform for a national timber supplier, with custom delivery calculator, Click and Collect, and REST API powering an iOS/Android app.</div>
+      </div>
+
+      <div class="proj-row">
+        <div>
+          <div class="proj-name">Witham Group</div>
+          <div class="proj-country">United Kingdom</div>
+        </div>
+        <div class="proj-stack">
+          <span>Magento 2</span><span>B2B</span><span>GBP</span><span>Trade Pricing</span>
+        </div>
+        <div class="proj-desc">B2B Magento 2 platform for a UK industrial group with trade account pricing, role-based access, UK tax/shipping rules, and bulk order functionality.</div>
+      </div>
+
+      <div class="proj-row">
+        <div>
+          <div class="proj-name">JDA</div>
+          <div class="proj-country">Germany</div>
+        </div>
+        <div class="proj-stack">
+          <span>Magento 2</span><span>B2B</span><span>German</span><span>EUR</span><span>EU VAT / GDPR</span>
+        </div>
+        <div class="proj-desc">Full German-localised B2B Magento 2 platform with EUR currency, EU VAT and GDPR compliance, and European payment gateway integration.</div>
+      </div>
+
+      <div class="proj-row">
+        <div>
+          <div class="proj-name">Eden Fine Wines</div>
+          <div class="proj-country">USA</div>
+        </div>
+        <div class="proj-stack">
+          <span>Magento 2</span><span>Age Verification</span><span>State Shipping</span>
+        </div>
+        <div class="proj-desc">Luxury eCommerce for a premium wine retailer with age-gate verification, complex vintage/region filtering, and US state-level alcohol shipping compliance.</div>
+      </div>
+
+      <div class="proj-row">
+        <div>
+          <div class="proj-name">Annabelle</div>
+          <div class="proj-country">UAE</div>
+        </div>
+        <div class="proj-stack">
+          <span>Magento 2</span><span>Arabic RTL</span><span>AED</span><span>UAE Payment</span>
+        </div>
+        <div class="proj-desc">UAE women's fashion store with Arabic RTL theme, AED currency, and localised Middle East payment gateway integration.</div>
+      </div>
+
+      <div class="proj-row">
+        <div>
+          <div class="proj-name">AMRI Fashions</div>
+          <div class="proj-country">UAE</div>
+        </div>
+        <div class="proj-stack">
+          <span>Apple Pay</span><span>Tabby BNPL</span><span>Aramex</span>
+        </div>
+        <div class="proj-desc">UAE fashion platform integration: Apple Pay, Tabby Buy-Now-Pay-Later, real-time Aramex shipment tracking, and WhatsApp ordering for the GCC market.</div>
+      </div>
+
+      <div class="proj-row">
+        <div>
+          <div class="proj-name">Marine Rescue</div>
+          <div class="proj-country">Australia</div>
+        </div>
+        <div class="proj-stack">
+          <span>Magento 2</span><span>B2B+B2C</span><span>Compliance Catalogue</span>
+        </div>
+        <div class="proj-desc">Marine safety equipment platform with compliance product specs, B2B trade pricing, and Australian domestic logistics integration.</div>
+      </div>
+
+      <div class="proj-row">
+        <div>
+          <div class="proj-name">JustAnotherStore</div>
+          <div class="proj-country">Netherlands</div>
+        </div>
+        <div class="proj-stack">
+          <span>Magento 2</span><span>Dutch</span><span>EUR</span><span>iDEAL</span><span>GDPR</span>
+        </div>
+        <div class="proj-desc">Dutch eCommerce with full Dutch localisation, iDEAL as primary payment method, EUR currency, and EU GDPR cookie compliance.</div>
+      </div>
+
+      <div class="proj-row">
+        <div>
+          <div class="proj-name">Snowhite Online</div>
+          <div class="proj-country">India</div>
+        </div>
+        <div class="proj-stack">
+          <span>Magento 2</span><span>INR</span><span>Razorpay / UPI</span><span>GST</span><span>Logistics</span>
+        </div>
+        <div class="proj-desc">Indian fashion eCommerce with Razorpay/UPI payment, GST tax configuration, and a last-mile logistics API for real-time delivery tracking.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section style="border-top:1px solid var(--line); padding-bottom:0;">
+  <div class="wrap">
+    <div class="section-head" style="border:none; margin-bottom:24px;">
+      <div>
+        <div class="eyebrow">Education</div>
+        <h2 style="font-size:24px;">Foundation</h2>
+      </div>
+    </div>
+    <div class="spec-table" style="margin-bottom:40px;">
+      <div class="spec-row">
+        <div class="spec-key">2009</div>
+        <div class="spec-val">B.E., Information Technology — North Gujarat University, Modasa, Gujarat</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">2006</div>
+        <div class="spec-val">Diploma, Information Technology — Technical Education Board, Ahmedabad, Gujarat</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="eyebrow">Let's talk</div>
+    <h2>Available for immediate interviews. 2-month notice. Anywhere in the world.</h2>
+    <p class="lead">27 delivered projects across 7 countries. Full-stack ownership of architecture, development, team leadership, and client delivery — open to remote, hybrid, or full relocation.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="mailto:dhirenprajapati1986@gmail.com">Email me →</a>
+      <a class="btn btn-ghost" href="https://linkedin.com/in/dhiren-prajapati1986" target="_blank" rel="noopener">View LinkedIn</a>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-item">
+        <span class="k">Email</span>
+        <span class="v"><a href="mailto:dhirenprajapati1986@gmail.com">dhirenprajapati1986@gmail.com</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="k">Phone</span>
+        <span class="v"><a href="tel:+917698731830">+91 76987 31830</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="k">LinkedIn</span>
+        <span class="v"><a href="https://linkedin.com/in/dhiren-prajapati1986" target="_blank" rel="noopener">dhiren-prajapati1986</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="k">Location</span>
+        <span class="v">Ahmedabad, Gujarat, India</span>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 Dhiren Prajapati — Magento 2 / Adobe Commerce Architect</span>
+      <span>Built &amp; deployed on GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
