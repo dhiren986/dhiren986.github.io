@@ -304,6 +304,22 @@
     font-family:var(--serif); font-weight:600; font-size:18px;
     display:flex; align-items:center; gap:8px;
   }
+  .proj-name a{
+    display:inline-flex; align-items:center; gap:6px;
+    border-bottom:1px solid transparent;
+    transition:border-color .2s, color .2s;
+  }
+  .proj-name a:hover{
+    color:var(--copper);
+    border-bottom-color:var(--copper);
+  }
+  .proj-name a::after{
+    content:'↗';
+    font-size:13px;
+    font-family:var(--mono);
+    color:var(--slate-light);
+  }
+  .proj-name a:hover::after{color:var(--copper);}
   .proj-name .badge{
     font-family:var(--mono); font-size:9px; color:var(--copper);
     border:1px solid var(--copper); padding:2px 6px;
@@ -389,6 +405,7 @@
     <div class="hero-actions">
       <a class="btn btn-primary" href="#contact">Get in touch →</a>
       <a class="btn btn-ghost" href="#projects">View 11 live platforms</a>
+      <a class="btn btn-ghost" href="Dhiren_Prajapati_Resume.pdf" download>Download résumé ↓</a>
     </div>
 
     <div class="stats">
@@ -631,7 +648,7 @@
 
       <div class="proj-row">
         <div>
-          <div class="proj-name">Jazeera Paints <span class="badge">Award</span></div>
+          <div class="proj-name"><a href="https://jazeerapaints.com/sa_en/" target="_blank" rel="noopener">Jazeera Paints <span class="badge">Award</span></a></div>
           <div class="proj-country">Saudi Arabia / UAE</div>
         </div>
         <div class="proj-stack">
@@ -642,7 +659,7 @@
 
       <div class="proj-row">
         <div>
-          <div class="proj-name">Andaaz Fashion</div>
+          <div class="proj-name"><a href="https://www.andaazfashion.com/" target="_blank" rel="noopener">Andaaz Fashion</a></div>
           <div class="proj-country">USA / UK / Malaysia / France</div>
         </div>
         <div class="proj-stack">
@@ -653,7 +670,7 @@
 
       <div class="proj-row">
         <div>
-          <div class="proj-name">PY Timber Warehouse</div>
+          <div class="proj-name"><a href="https://pytimberwarehouse.com.au/" target="_blank" rel="noopener">PY Timber Warehouse</a></div>
           <div class="proj-country">Australia</div>
         </div>
         <div class="proj-stack">
@@ -664,7 +681,7 @@
 
       <div class="proj-row">
         <div>
-          <div class="proj-name">Witham Group</div>
+          <div class="proj-name"><a href="https://www.withamgroup.co.uk" target="_blank" rel="noopener">Witham Group</a></div>
           <div class="proj-country">United Kingdom</div>
         </div>
         <div class="proj-stack">
@@ -675,7 +692,7 @@
 
       <div class="proj-row">
         <div>
-          <div class="proj-name">JDA</div>
+          <div class="proj-name"><a href="https://www.jda.de/" target="_blank" rel="noopener">JDA</a></div>
           <div class="proj-country">Germany</div>
         </div>
         <div class="proj-stack">
@@ -686,7 +703,7 @@
 
       <div class="proj-row">
         <div>
-          <div class="proj-name">Eden Fine Wines</div>
+          <div class="proj-name"><a href="https://edenfinewines.com/" target="_blank" rel="noopener">Eden Fine Wines</a></div>
           <div class="proj-country">USA</div>
         </div>
         <div class="proj-stack">
@@ -697,7 +714,7 @@
 
       <div class="proj-row">
         <div>
-          <div class="proj-name">Annabelle</div>
+          <div class="proj-name"><a href="https://annabelleme.com/" target="_blank" rel="noopener">Annabelle</a></div>
           <div class="proj-country">UAE</div>
         </div>
         <div class="proj-stack">
@@ -708,7 +725,7 @@
 
       <div class="proj-row">
         <div>
-          <div class="proj-name">AMRI Fashions</div>
+          <div class="proj-name"><a href="https://amri.ae/" target="_blank" rel="noopener">AMRI Fashions</a></div>
           <div class="proj-country">UAE</div>
         </div>
         <div class="proj-stack">
@@ -719,7 +736,7 @@
 
       <div class="proj-row">
         <div>
-          <div class="proj-name">Marine Rescue</div>
+          <div class="proj-name"><a href="https://www.marine-rescue.com/" target="_blank" rel="noopener">Marine Rescue</a></div>
           <div class="proj-country">Australia</div>
         </div>
         <div class="proj-stack">
@@ -730,24 +747,13 @@
 
       <div class="proj-row">
         <div>
-          <div class="proj-name">JustAnotherStore</div>
+          <div class="proj-name"><a href="https://justanotherstore.nl/" target="_blank" rel="noopener">JustAnotherStore</a></div>
           <div class="proj-country">Netherlands</div>
         </div>
         <div class="proj-stack">
           <span>Magento 2</span><span>Dutch</span><span>EUR</span><span>iDEAL</span><span>GDPR</span>
         </div>
         <div class="proj-desc">Dutch eCommerce with full Dutch localisation, iDEAL as primary payment method, EUR currency, and EU GDPR cookie compliance.</div>
-      </div>
-
-      <div class="proj-row">
-        <div>
-          <div class="proj-name">Snowhite Online</div>
-          <div class="proj-country">India</div>
-        </div>
-        <div class="proj-stack">
-          <span>Magento 2</span><span>INR</span><span>Razorpay / UPI</span><span>GST</span><span>Logistics</span>
-        </div>
-        <div class="proj-desc">Indian fashion eCommerce with Razorpay/UPI payment, GST tax configuration, and a last-mile logistics API for real-time delivery tracking.</div>
       </div>
 
     </div>
@@ -783,6 +789,7 @@
     <div class="hero-actions">
       <a class="btn btn-primary" href="mailto:dhirenprajapati1986@gmail.com">Email me →</a>
       <a class="btn btn-ghost" href="https://linkedin.com/in/dhiren-prajapati1986" target="_blank" rel="noopener">View LinkedIn</a>
+      <a class="btn btn-ghost" href="Dhiren_Prajapati_Resume.pdf" download>Download résumé ↓</a>
     </div>
 
     <div class="contact-grid">
